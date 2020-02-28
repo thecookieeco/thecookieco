@@ -1,1 +1,1 @@
-# cookie-mock
+# thecookieeco
