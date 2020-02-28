@@ -1,0 +1,33 @@
+.order-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-actions button:focus {
+  outline: none;
+}
+
+.button-negative:hover {
+	box-shadow: inset 0 0 0 1px crimson;
+	color: crimson !important;
+}
+
+.button-negative:active {
+  background-color: rgba(206, 20, 57, 0.2)
+}
+
+.no-active-outline:active {
+  outline: none;
+}
+
+@media screen and (max-width: 480px) {
+
+  .order-actions button {
+      font-size: 0.6rem;
+			height: 3.325em;
+			line-height: 3.325em;
+			border-radius: 3.325em;
+			padding: 0 2em;
+  }
+
+}

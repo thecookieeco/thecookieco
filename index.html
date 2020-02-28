@@ -5,6 +5,7 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/custom.css">
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -286,6 +287,7 @@
 							</div>
 							<div class="inner">
 								<div class="table-wrapper">
+									<h3 class="align-left">Cart</h3>
 									<table class="align-left">
 										<thead>
 											<tr>
@@ -328,10 +330,11 @@
 											</tr>
 										</tfoot>
 									</table>
+									<div class="order-actions">
+											<button class="button-negative">Cancel Order</button>
+											<button class="primary">Review Order</button>
+									</div>
 								</div>
-								<section class="inner align-right">
-									<button class="primary">Submit Order</button>
-								</section>
 							</div>
 						</div>
 					</section>
@@ -340,7 +343,7 @@
 					<section id="get-in-touch" class="wrapper style1 align-center">
 						<div class="inner medium">
 							<h2>Get in touch!</h2>
-							<form method="post" action="#">
+							<form>
 								<div class="fields">
 									<div class="field half">
 										<label for="name">Name</label>
@@ -356,7 +359,32 @@
 									</div>
 								</div>
 								<ul class="actions special">
-									<li><input type="submit" name="submit" id="submit" value="Send Message" /></li>
+									<li><input class="no-active-outline" type="submit" name="submit" id="submit" value="Send Message" /></li>
+								</ul>
+							</form>
+						</div>
+						<div class="inner medium">
+							<form name="submit-to-google-sheet">
+								<div class="fields">
+									<div class="field half">
+										<label for="firstname">First Name</label>
+										<input name="firstname" type="text" required>
+									</div>
+									<div class="field half">
+										<label for="surname">Last Name</label>
+										<input name="surname" type="text" required>
+									</div>
+									<div class="field">
+										<label for="email">Email</label>
+										<input name="email" type="email" required>
+									</div>
+									<div class="field">
+										<label for="message">Message</label>
+										<textarea name="message" id="message" rows="6"></textarea>
+									</div>
+								</div>
+								<ul class="actions special">
+									<li><input class="no-active-outline" type="submit" name="submit" value="Send Message" /></li>
 								</ul>
 							</form>
 						</div>
@@ -378,6 +406,13 @@
 			</div>
 
 		<!-- Scripts -->
+
+			<!-- Polyfill -->
+			<script src="https://wzrd.in/standalone/formdata-polyfill"></script>
+			<script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
+			<script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
+
+			<!-- JQuery & Main -->
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrollex.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
@@ -385,6 +420,18 @@
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
+
+			<script>
+				const scriptURL = '<SCRIPT URL>'
+				const form = document.forms['submit-to-google-sheet']
+			
+				form.addEventListener('submit', e => {
+					e.preventDefault()
+					fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+						.then(response => console.log('Success!', response))
+						.catch(error => console.error('Error!', error.message))
+				})
+			</script>
 
 	</body>
 </html>
