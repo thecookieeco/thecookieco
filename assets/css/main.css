@@ -345,6 +345,10 @@ input, select, textarea {
 		width: 33%;
 	}
 
+	#get-in-touch {
+		margin-bottom: 50px;
+	}
+
 	@media screen and (max-width: 736px) {
 
 		p.major {
