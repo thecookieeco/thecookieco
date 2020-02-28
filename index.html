@@ -333,7 +333,9 @@
 									</table>
 									<div class="order-actions">
 											<button class="button-negative">Cancel Order</button>
-											<button class="primary">Review Order</button>
+											<span id="review-order">
+												<button class="primary">Review Order</button>
+											</span>
 									</div>
 								</div>
 							</div>
@@ -359,7 +361,7 @@
 										<textarea name="message" id="message" rows="6"></textarea>
 									</div>
 								</div>
-								<ul class="actions special">
+								<ul class="no-active-outline actions special">
 									<li><input class="no-active-outline" type="submit" name="submit" id="submit" value="Send Message" /></li>
 								</ul>
 							</form>
@@ -372,8 +374,8 @@
 										<input name="firstname" type="text" required>
 									</div>
 									<div class="field half">
-										<label for="surname">Last Name</label>
-										<input name="surname" type="text" required>
+										<label for="lastname">Last Name</label>
+										<input name="lastname" type="text" required>
 									</div>
 									<div class="field">
 										<label for="email">Email</label>
@@ -384,7 +386,7 @@
 										<textarea name="message" id="message" rows="6"></textarea>
 									</div>
 								</div>
-								<ul class="actions special">
+								<ul class="no-active-outline actions special">
 									<li><input class="no-active-outline" type="submit" name="submit" value="Send Message" /></li>
 								</ul>
 							</form>
@@ -408,10 +410,18 @@
 
 		<!-- Scripts -->
 
+			<script>
+				document.addEventListener("touchstart", function(e) {
+					console.log(e.defaultPrevented);  // will be false
+					e.preventDefault();   // does nothing since the listener is passive
+					console.log(e.defaultPrevented);  // still false
+				}, {passive: true});
+			</script>
+
 			<!-- Polyfill -->
-			<script src="https://wzrd.in/standalone/formdata-polyfill"></script>
-			<script src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
-			<script src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
+			<script defer src="https://wzrd.in/standalone/formdata-polyfill"></script>
+			<script defer src="https://wzrd.in/standalone/promise-polyfill@latest"></script>
+			<script defer src="https://wzrd.in/standalone/whatwg-fetch@latest"></script>
 
 			<!-- JQuery & Main -->
 			<script src="assets/js/jquery.min.js"></script>
@@ -422,8 +432,9 @@
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
 
+			<script src="assets/js/custom.js"></script>
 			<script>
-				const scriptURL = '<SCRIPT URL>'
+				const scriptURL = 'https://script.google.com/macros/s/AKfycbxDNQhETEAxXmGDvfyXiZUfGghWyv1WybXct4ZkA8g81NLXp0I/exec'
 				const form = document.forms['submit-to-google-sheet']
 			
 				form.addEventListener('submit', e => {

@@ -20,6 +20,10 @@
   outline: none;
 }
 
+.modal-disable {
+  display: none !important;
+}
+
 @media screen and (max-width: 480px) {
 
   .order-actions button {
