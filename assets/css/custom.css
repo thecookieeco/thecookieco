@@ -24,6 +24,24 @@
   display: none !important;
 }
 
+.copywrite {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.has-items {
+}
+
+.has-items:active {
+  color: crimson !important;
+}
+
+.cart-box {
+  display: flex;
+  justify-content: flex-end;
+}
+
 @media screen and (max-width: 480px) {
 
   .order-actions button {
